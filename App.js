@@ -1,69 +1,49 @@
 
-import React from 'react';
+// import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
 } from 'react-native';
+import HeaderComponent from './components/HeaderComponent';
+import InputComponent from './components/InputComponent';
 
-function TextComponent(props) {
-  let textStyleSet = {};
-  if(props.title){
-    textStyleSet = styles.textTitle
-  }
-  if(props.subTitle){
-    textStyleSet = styles.textSubTitle
-  }
-  if(props.description){
-    textStyleSet = styles.textDescription
-  }
-  return (
-    <Text style={[{color: props.color}, {...textStyleSet}]}>{props.children}</Text>
-  );
-  
-}
+import TextComponent from './components/TextComponent';
+
 
 function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <View style={{
-        backgroundColor: "red",
-        paddingHorizontal: 24,
-        paddingVertical: 24,
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}>
+    <SafeAreaView style={styles.sectionContainer}>
+      <ScrollView>
+       <HeaderComponent />
         <View>
-          <TextComponent color="white">X</TextComponent>
+          <TextComponent separator sublime title>Titulo</TextComponent>
+          <TextComponent subTitle>SubtituloTitulo</TextComponent>
         </View>
         <View>
-          <TextComponent color="white">Title Page</TextComponent>
+          <InputComponent placeholder="e-mail"/>
+          <InputComponent placeholder="senha"/>
         </View>
-        <View>
-          <TextComponent color="white">-></TextComponent>
-        </View>
-      </View>
-
-      <View >
-        <TextComponent title>Titulo</TextComponent>
-        <TextComponent subTitle>SubtituloTitulo</TextComponent>
-      </View>
-
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  stylesBar: {
+    backgroundColor: 'red',
+    paddingHorizontal: 24,
+    paddingVertical: 24,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   sectionContainer: {
     flex: 1,
     marginTop: 32,
     // paddingHorizontal: 24,
     borderWidth: 5,
-    borderColor: "greem",
+    borderColor: 'greem',
   },
   textTitle: {
     fontSize: 24,
@@ -71,12 +51,15 @@ const styles = StyleSheet.create({
   textSubTitle: {
     fontSize: 18,
   },
+  textAlignCenter: {
+    textAlign: 'center'
+  },
   textDescription: {
     marginTop: 8,
     fontSize: 14,
     fontWeight: '400',
     borderWidth: 1,
-    borderColor: "blue",
+    borderColor: 'blue',
   },
 });
 
